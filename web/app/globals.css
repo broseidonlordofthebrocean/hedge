@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Base */
+    --black: 0 0% 4%;
+    --charcoal: 0 0% 8%;
+    --slate: 0 0% 10%;
+
+    /* Gold accent */
+    --gold: 43 60% 58%;
+    --gold-dim: 43 43% 38%;
+    --gold-bright: 43 85% 74%;
+
+    /* Status colors */
+    --green: 145 50% 36%;
+    --green-bright: 142 69% 58%;
+    --red: 0 59% 49%;
+    --red-dim: 0 57% 34%;
+
+    /* Text */
+    --text: 0 0% 91%;
+    --text-dim: 0 0% 42%;
+    --text-muted: 0 0% 29%;
+
+    /* Borders */
+    --border: 0 0% 16%;
+    --border-hover: 0 0% 23%;
+
+    /* shadcn compatibility */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 91%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 91%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 91%;
+    --primary: 43 60% 58%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 91%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 91%;
+    --destructive: 0 59% 49%;
+    --destructive-foreground: 0 0% 91%;
+    --ring: 43 60% 58%;
+    --input: 0 0% 16%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Score tier colors */
+.score-excellent {
+  @apply text-green-bright;
+}
+.score-strong {
+  @apply text-cyan-400;
+}
+.score-moderate {
+  @apply text-gold;
+}
+.score-vulnerable {
+  @apply text-orange-500;
+}
+.score-critical {
+  @apply text-red;
+}
+
+/* Ticker animation */
+.ticker-scroll {
+  animation: ticker 30s linear infinite;
+}
+
+.ticker-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-charcoal;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-border-hover;
+}
+
+/* Survival meter gradient */
+.survival-meter-bg {
+  background: linear-gradient(
+    to right,
+    hsl(var(--red)) 0%,
+    hsl(var(--red)) 40%,
+    hsl(var(--gold)) 55%,
+    hsl(var(--gold)) 70%,
+    hsl(var(--green-bright)) 85%,
+    hsl(var(--green-bright)) 100%
+  );
+}
+
+/* Card hover effect */
+.card-hover {
+  @apply transition-all duration-200;
+}
+
+.card-hover:hover {
+  @apply border-border-hover shadow-lg shadow-gold/5;
+}
+
+/* Number animations */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count-up {
+  animation: count-up 0.5s ease-out forwards;
+}
+
+/* Gradient text */
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-gold to-gold-bright;
+}
+
+/* Focus ring */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-background;
+}
