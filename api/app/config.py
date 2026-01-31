@@ -35,6 +35,13 @@ class Settings(BaseSettings):
     stripe_secret_key: str = ""
     stripe_webhook_secret: str = ""
 
+    # Cloudflare R2 Storage
+    r2_account_id: str = ""
+    r2_access_key_id: str = ""
+    r2_secret_access_key: str = ""
+    r2_bucket_name: str = "hedge-data"
+    r2_endpoint: str = ""  # https://<account_id>.r2.cloudflarestorage.com
+
     class Config:
         env_file = ".env"
         case_sensitive = False
