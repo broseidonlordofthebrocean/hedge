@@ -7,6 +7,8 @@ from .macro import router as macro_router
 from .portfolio import router as portfolio_router
 from .watchlist import router as watchlist_router
 from .alerts import router as alerts_router
+from .billing import router as billing_router
+from .users import router as users_router
 
 api_router = APIRouter()
 
@@ -17,3 +19,5 @@ api_router.include_router(macro_router, prefix="/macro", tags=["Macro"])
 api_router.include_router(portfolio_router, prefix="/portfolio", tags=["Portfolio"])
 api_router.include_router(watchlist_router, prefix="/watchlist", tags=["Watchlist"])
 api_router.include_router(alerts_router, prefix="/alerts", tags=["Alerts"])
+api_router.include_router(billing_router, prefix="/billing", tags=["Billing"])
+api_router.include_router(users_router, prefix="/users", tags=["Users"])
