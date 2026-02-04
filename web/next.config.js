@@ -1,22 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   images: {
     domains: ['localhost'],
-    unoptimized: true, // Required for Cloudflare Pages static export
+    unoptimized: true,
   },
-  // Cloudflare Pages edge runtime compatibility
-  experimental: {
-    runtime: 'edge',
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/api/v1/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'}/:path*`,
-      },
-    ];
-  },
+  trailingSlash: true,
+  // Make dynamic routes work in static export
+  dynamicParams: false,
 };
 
 module.exports = nextConfig;
